@@ -1,0 +1,31 @@
+//! just "event" documents, return only title
+*[_type == "event"]{title}
+
+
+//! a query just for in-person events
+*[
+  _type == "event"
+  && eventType == "in-person"
+]
+
+
+//! a query just for upcoming in-person events
+*[
+  _type == "event"
+  && eventType == "in-person"
+  && date > now()
+]
+
+//! add a projection to return only the event name and the artist name
+*[_type == "event" 
+  && eventType == "in-person"
+  && date !=  now()
+ ]{name, headline->{
+  name
+ },
+  "isUpcoming":true
+  }
+Returning the event's name as-is
+Using the -> to join the referenced artist document for headline and return just the name of that artist (try removing the arrow and the projection after to see the difference in the returned data)
+Defining some arbitrary data for isUpcoming (which is implied by the filter), demonstrating the flexibility of GROQ by creating and returning new content in the context of a query.
+  
