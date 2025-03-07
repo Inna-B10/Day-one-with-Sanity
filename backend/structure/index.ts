@@ -1,4 +1,4 @@
-import {CalendarIcon, PinIcon, UsersIcon} from '@sanity/icons'
+import {CalendarIcon, MarkerIcon, PinIcon, UsersIcon} from '@sanity/icons'
 import type {StructureResolver} from 'sanity/structure'
 
 export const structure: StructureResolver = (S) =>
@@ -18,6 +18,7 @@ export const structure: StructureResolver = (S) =>
         .child(S.documentList().title('Past Events').filter('date < now()')),
       S.divider(),
 
-      S.documentTypeListItem('artist').title('Artist').icon(UsersIcon),
-      S.documentTypeListItem('venue').title('Venues').icon(PinIcon),
+      S.documentTypeListItem('event').title('Events').icon(PinIcon),
+      S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),
+      S.documentTypeListItem('venue').title('Venues').icon(MarkerIcon),
     ])

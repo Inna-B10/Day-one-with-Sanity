@@ -32,12 +32,14 @@ export const eventType = defineType({
         list: ['in-person', 'virtual'],
         layout: 'radio',
       },
+      validation: (rule) => rule.required().error('Required field'),
       group: 'details',
     }),
     defineField({
       name: 'date',
       type: 'datetime',
       group: 'details',
+      validation: (rule) => rule.required().error('Required field'),
     }),
     defineField({
       name: 'doorsOpen',
