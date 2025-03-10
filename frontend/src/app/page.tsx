@@ -5,7 +5,7 @@ import Link from 'next/link'
 const EVENTS_QUERY = defineQuery(`*[
   _type == "event"
   && defined(slug.current)
-]{_id, name, slug, date}|order(date desc)`)
+]{_id, name, slug, date}|order(date asc)`)
 
 export default async function IndexPage() {
 	const { data: events } = await sanityFetch({ query: EVENTS_QUERY })
